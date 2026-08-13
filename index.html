@@ -893,6 +893,30 @@
       pointer-events: none;
     }
 
+    /* ── MUSIC BUTTON ── */
+    .music-btn {
+      position: fixed;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 90px);
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(49,63,42,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      transition: transform 0.2s;
+    }
+    .music-btn.visible { display: flex; }
+    .music-btn:active { transform: scale(0.92); }
+    .music-btn svg { width: 20px; height: 20px; }
+
     /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
@@ -975,6 +999,17 @@
       </clipPath>
     </defs>
   </svg>
+  <audio id="bg-music" src="music.mp3" loop preload="none"></audio>
+
+  <button class="music-btn" id="music-btn" aria-label="Müziği aç/kapat">
+    <svg id="music-icon-play" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 18V6l11 6-11 6z"/>
+    </svg>
+    <svg id="music-icon-pause" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" style="display:none">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </button>
+
   <div class="page-wrapper">
   <div class="card">
 
@@ -1233,8 +1268,36 @@
         badge.style.animation = `hero-item-in ${itemEase} 0.35s both`;
         msg.style.animation   = `hero-item-in ${itemEase} 0.5s both`;
 
+        // Müziği başlat
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        music.play().then(() => {
+          musicBtn.classList.add('visible');
+          document.getElementById('music-icon-play').style.display = 'none';
+          document.getElementById('music-icon-pause').style.display = '';
+        }).catch(() => {
+          // Otomatik oynatma bloklandıysa butonu yine de göster
+          musicBtn.classList.add('visible');
+        });
+
       }, 550);
     }
+
+    // Müzik butonu toggle
+    document.getElementById('music-btn').addEventListener('click', function() {
+      const music = document.getElementById('bg-music');
+      const iconPlay  = document.getElementById('music-icon-play');
+      const iconPause = document.getElementById('music-icon-pause');
+      if (music.paused) {
+        music.play();
+        iconPlay.style.display  = 'none';
+        iconPause.style.display = '';
+      } else {
+        music.pause();
+        iconPlay.style.display  = '';
+        iconPause.style.display = 'none';
+      }
+    });
 
     window.addEventListener('resize', applyExpand);
     applyExpand();
