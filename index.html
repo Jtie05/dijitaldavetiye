@@ -60,7 +60,7 @@
     .card {
       position: relative;
       width: calc(393px * var(--r));
-      height: calc(852px * var(--r));
+      height: max(calc(852px * var(--r)), 100svh);
       background:
         radial-gradient(ellipse 100% calc(160px * var(--r)) at 50% calc(640px * var(--r)), rgba(100,148,0,0.45) 0%, rgba(88,130,0,0.18) 40%, transparent 68%),
         var(--color-background-cream);
