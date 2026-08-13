@@ -32,12 +32,27 @@
       overflow: hidden;
     }
 
+    /* Davetiye açıldıktan sonra arka plan cream olur */
+    body:has(.invitation-page.is-active) {
+      background: #fdfff3;
+      min-height: 100%;
+    }
+    html:has(.invitation-page.is-active) {
+      background: #fdfff3;
+    }
+
     /* Sayfa maks genişliği */
     .page-wrapper {
       width: 100%;
       max-width: 658px;
       display: flex;
       justify-content: center;
+    }
+
+    /* Davetiye açıkken page-wrapper tam yüksekliği kaplar */
+    .page-wrapper:has(.invitation-page.is-active) {
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
     /* ── CARD ── */
@@ -1187,10 +1202,12 @@
 
         document.querySelector('html').style.overflow   = 'auto';
         document.querySelector('html').style.height     = 'auto';
-        document.querySelector('body').style.overflowY  = 'auto';
-        document.querySelector('body').style.overflowX  = 'hidden';
-        document.querySelector('body').style.height     = 'auto';
-        document.querySelector('body').style.alignItems = 'flex-start';
+        document.querySelector('body').style.overflowY   = 'auto';
+        document.querySelector('body').style.overflowX   = 'hidden';
+        document.querySelector('body').style.height      = 'auto';
+        document.querySelector('body').style.alignItems  = 'flex-start';
+        document.querySelector('html').style.background  = '#fdfff3';
+        document.querySelector('body').style.background  = '#fdfff3';
 
         invPage.classList.add('is-active');
 
