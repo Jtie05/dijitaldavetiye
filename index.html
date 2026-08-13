@@ -279,7 +279,7 @@
     /* ── DATE SECTION ── */
     .date-section {
       position: absolute;
-      bottom: calc(56px * var(--r));
+      bottom: max(calc(56px * var(--r)), calc(env(safe-area-inset-bottom, 0px) + 80px));
       top: auto;
       left: 50%;
       transform: translateX(calc(-50% + 0.5px));
