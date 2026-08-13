@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Elif Begüm & Mücahit - Düğün Davetiyesi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Comfortaa:wght@400;500&family=EB+Garamond:wght@400;500&family=Dancing+Script:wght@400&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --color-white:           #ffffff;
+      --color-black:           #000000;
+      --color-primary:         #313f2a;
+      --color-whatsapp:        #588200;
+      --color-background-cream:#fdfff3;
+      --color-accent-warm:     #f5f3e8;
+      --color-gray:            #d9d9d9;
+
+      /* JS sets this to min(viewport,658)/393. Default 1 = 393px base. */
+      --r: 1;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Sayfa maks genişliği */
+    .page-wrapper {
+      width: 100%;
+      max-width: 658px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── CARD ── */
+    .card {
+      position: relative;
+      width: calc(393px * var(--r));
+      height: calc(852px * var(--r));
+      background:
+        radial-gradient(ellipse 100% calc(160px * var(--r)) at 50% calc(640px * var(--r)), rgba(100,148,0,0.45) 0%, rgba(88,130,0,0.18) 40%, transparent 68%),
+        var(--color-background-cream);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* ── PHOTO ── */
+    .photo-wrap {
+      position: absolute;
+      left: calc(-23px * var(--r));
+      top: 0;
+      width: calc(446px * var(--r));
+      height: calc(671px * var(--r));
+      overflow: hidden;
+      /* objectBoundingBox clip scales with element size */
+      clip-path: url(#archClip);
+    }
+    .photo-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ── VIGNETTE OVERLAY ── */
+    .vignette {
+      position: absolute;
+      top: calc(-190px * var(--r));
+      left: calc(-525px * var(--r));
+      width: calc(1440px * var(--r));
+      height: calc(855px * var(--r));
+      background: var(--color-black);
+      border-radius: 0 0 calc(700px * var(--r)) calc(700px * var(--r));
+      opacity: 0.23;
+      pointer-events: none;
+      -webkit-mask: url('vignette-mask.svg') calc(525px * var(--r)) calc(190px * var(--r)) / calc(393px * var(--r)) calc(675px * var(--r)) no-repeat;
+              mask: url('vignette-mask.svg') calc(525px * var(--r)) calc(190px * var(--r)) / calc(393px * var(--r)) calc(675px * var(--r)) no-repeat;
+    }
+
+    /* ── CIRCLE OUTER ── */
+    .circle-outer {
+      position: absolute;
+      top:    calc(0.2347 * 852px * var(--r));
+      right:  calc(0.084  * 393px * var(--r));
+      bottom: calc(0.3826 * 852px * var(--r));
+      left:   calc(0.0865 * 393px * var(--r));
+      pointer-events: none;
+    }
+    .circle-outer img { width: 100%; height: 100%; display: block; }
+
+    /* ── CIRCLE INNER ── */
+    .circle-inner {
+      position: absolute;
+      top:    calc(0.2406 * 852px * var(--r));
+      right:  calc(0.0967 * 393px * var(--r));
+      bottom: calc(0.3885 * 852px * var(--r));
+      left:   calc(0.0992 * 393px * var(--r));
+      pointer-events: none;
+    }
+    .circle-inner img { width: 100%; height: 100%; display: block; }
+
+    /* ── WREATH ── */
+    .wreath {
+      position: absolute;
+      top:    calc(0.2136 * 852px * var(--r));
+      right:  calc(0.1908 * 393px * var(--r));
+      bottom: calc(0.3885 * 852px * var(--r));
+      left:   calc(0.1883 * 393px * var(--r));
+      pointer-events: none;
+    }
+    .wreath img { width: 100%; height: 100%; display: block; }
+
+    /* ── LOTUS ── */
+    .lotus {
+      position: absolute;
+      top:    calc(0.581  * 852px * var(--r));
+      right:  calc(0.4224 * 393px * var(--r));
+      bottom: calc(0.3746 * 852px * var(--r));
+      left:   calc(0.4504 * 393px * var(--r));
+      pointer-events: none;
+    }
+    .lotus img { width: 100%; height: 100%; display: block; }
+
+    /* ── FRAME 377 ── */
+    .frame377 {
+      position: absolute;
+      top:  calc(497px * var(--r));
+      left: calc(117px * var(--r));
+      width:  calc(51px * var(--r));
+      height: calc(25px * var(--r));
+      pointer-events: none;
+    }
+    .frame377 img { width: 100%; height: 100%; display: block; }
+
+    /* ── NAMES BLOCK ── */
+    .names-block {
+      position: absolute;
+      top:  calc(257px * var(--r));
+      left: calc(37px  * var(--r));
+      width: calc(319px * var(--r));
+      display: flex;
+      flex-direction: column;
+      gap: calc(9px * var(--r));
+      align-items: center;
+    }
+
+    .names {
+      font-family: 'Allura', cursive;
+      font-size: calc(48px * var(--r));
+      font-weight: 400;
+      line-height: 1;
+      color: var(--color-white);
+      text-align: center;
+      width: 100%;
+    }
+
+    .subtitle {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: calc(20px * var(--r));
+      font-weight: 400;
+      line-height: 1;
+      color: var(--color-white);
+      text-align: center;
+      padding: calc(5px * var(--r));
+      width: 100%;
+    }
+
+    /* ── CTA ROW ── */
+    .cta-row {
+      position: absolute;
+      top:  calc(627px * var(--r));
+      left: calc(52px  * var(--r));
+      width:  calc(290px * var(--r));
+      height: calc(85px  * var(--r));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(30px * var(--r));
+    }
+
+    .cta-arrow {
+      position: relative;
+      width:  calc(23px * var(--r));
+      height: calc(23px * var(--r));
+      flex-shrink: 0;
+    }
+    .cta-arrow img {
+      position: absolute;
+      width:  calc(101px * var(--r));
+      height: calc(99.5px * var(--r));
+      top:  50%;
+      left: 50%;
+      transform-origin: center center;
+      display: block;
+      filter: drop-shadow(0 0 6px rgba(88,130,0,0.6)) drop-shadow(0 0 12px rgba(88,130,0,0.3));
+    }
+
+    @keyframes nudge-left {
+      0%, 100% { transform: translate(-50%, -50%) rotate(90deg); }
+      50%       { transform: translate(calc(-50% + 5px), -50%) rotate(90deg); }
+    }
+    @keyframes nudge-right {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-90deg); }
+      50%       { transform: translate(calc(-50% - 5px), -50%) rotate(-90deg); }
+    }
+
+    .cta-arrow--left  img { animation: nudge-left  1.8s ease-in-out infinite; }
+    .cta-arrow--right img { animation: nudge-right 1.8s ease-in-out infinite; }
+
+    .open-btn {
+      flex: 1;
+      min-width: 0;
+      background: var(--color-whatsapp);
+      border: none;
+      border-radius: calc(60px * var(--r));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(5px * var(--r)) calc(20px * var(--r));
+      cursor: pointer;
+      gap: 0;
+      transition: transform .1s;
+    }
+    .open-btn:active { transform: scale(0.97); }
+
+    .open-btn__icon {
+      width:  calc(40px * var(--r));
+      height: calc(30px * var(--r));
+      object-fit: contain;
+      display: block;
+    }
+
+    .open-btn__label-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(10px * var(--r));
+      padding: calc(5px * var(--r));
+      width: calc(181px * var(--r));
+    }
+
+    .open-btn__label {
+      flex: 1;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: calc(16px * var(--r));
+      font-weight: 400;
+      line-height: 1;
+      color: var(--color-white);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* ── DATE SECTION ── */
+    .date-section {
+      position: absolute;
+      top: calc(722px * var(--r));
+      left: 50%;
+      transform: translateX(calc(-50% + 0.5px));
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(12px * var(--r));
+    }
+
+    .date-row {
+      display: flex;
+      align-items: center;
+      gap: calc(32px * var(--r));
+    }
+
+    .date-pill {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: rgba(18,22,16,0.1);
+      border-top:    1px solid var(--color-primary);
+      border-bottom: 1px solid var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(10px * var(--r));
+      padding: calc(5px * var(--r)) calc(10px * var(--r));
+      font-size: calc(16px * var(--r));
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0;
+      color: var(--color-primary);
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .date-pill--year { width: calc(89px * var(--r)); }
+
+    .date-day {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(46px * var(--r));
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0;
+      color: var(--color-primary);
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .date-time {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(20px * var(--r));
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0;
+      color: var(--color-primary);
+      text-align: center;
+      min-width: 100%;
+      width: min-content;
+    }
+
+    /* ── INVITATION PAGE ── */
+    .invitation-page {
+      display: none;
+      flex-direction: column;
+      width: calc(393px * var(--r));
+      background: var(--color-background-cream);
+    }
+    .invitation-page.is-active {
+      display: flex;
+    }
+
+    /* Photo section */
+    .hero-photo {
+      position: relative;
+      width: calc(393px * var(--r));
+      height: calc(895px * var(--r));
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .hero-photo__img {
+      position: absolute;
+      width: 100%;
+      height: 110.35%;
+      top: -10.37%;
+      left: 0;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-photo__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+    .hero-photo__content {
+      position: absolute;
+      top: calc(319px * var(--r));
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(10px * var(--r));
+      filter: drop-shadow(0px 4px 2px rgba(0,0,0,0.25));
+    }
+    .hero-names {
+      font-family: 'Allura', cursive;
+      font-size: calc(48px * var(--r));
+      font-weight: 400;
+      color: var(--color-white);
+      text-align: center;
+      line-height: 1;
+    }
+    .hero-date-badge {
+      display: flex;
+      align-items: center;
+      gap: calc(20px * var(--r));
+    }
+    .hero-date-dot {
+      width:  calc(29px * var(--r));
+      height: calc(29px * var(--r));
+      display: block;
+    }
+    .hero-date-text {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(20px * var(--r));
+      font-weight: 400;
+      color: var(--color-white);
+      text-align: center;
+      padding: calc(10px * var(--r));
+    }
+    .hero-message {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: calc(13px * var(--r));
+      font-weight: 500;
+      color: #e6e6e6;
+      text-align: center;
+      width: calc(334px * var(--r));
+      padding: calc(10px * var(--r));
+      line-height: 1.6;
+    }
+    .hero-scroll-left,
+    .hero-scroll-right {
+      position: absolute;
+      top: 0;
+    }
+    .hero-scroll-left  { right: calc(12px * var(--r)); }
+    .hero-scroll-right { left:  calc(12px * var(--r)); }
+
+    /* Illustration section */
+    .hero-illustration {
+      position: relative;
+      z-index: 1;
+      margin-top: calc(-150px * var(--r));
+      margin-left: calc((393px - 585px) / 2 * var(--r));
+      width:  calc(585px * var(--r));
+      height: calc(424px * var(--r));
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: calc(32px * var(--r));
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .hero-illustration__bg {
+      position: absolute;
+      width: 100%;
+      height: 107.18%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .hero-watercolor-wrap {
+      position: relative;
+      width:  calc(149.983px * var(--r));
+      height: calc(221.101px * var(--r));
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .hero-watercolor-wrap img {
+      position: absolute;
+      height: 102.61%;
+      left: -18.43%;
+      top: 0;
+      width: 151.5%;
+    }
+    .hero-decoration-line {
+      width:  calc(142.936px * var(--r));
+      height: calc(22.293px  * var(--r));
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* ── COUNTDOWN SECTION ── */
+    .countdown-section-wrap {
+      width: 100%;
+      background: var(--color-background-cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: calc(48px * var(--r)) calc(30px * var(--r));
+      gap: calc(48px * var(--r));
+    }
+
+    .countdown-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(12px * var(--r));
+      width: calc(323px * var(--r));
+    }
+
+    .countdown-title {
+      font-family: 'Allura', cursive;
+      font-size: calc(48px * var(--r));
+      font-weight: 400;
+      color: var(--color-primary);
+      text-align: center;
+      line-height: 1;
+    }
+
+    .countdown-subtitle {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(20px * var(--r));
+      font-weight: 400;
+      color: var(--color-primary);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .countdown-timer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: calc(8px * var(--r));
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(8px * var(--r));
+      width: calc(60px * var(--r));
+      flex-shrink: 0;
+    }
+
+    .countdown-unit__number {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(36px * var(--r));
+      font-weight: 400;
+      color: var(--color-whatsapp);
+      line-height: 1;
+      text-align: center;
+    }
+
+    .countdown-unit__label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: calc(14px * var(--r));
+      font-weight: 400;
+      color: var(--color-primary);
+      line-height: 1;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .countdown-sep {
+      width: 1px;
+      height: calc(32px * var(--r));
+      background: rgba(49,63,42,0.35);
+      flex-shrink: 0;
+    }
+
+    /* Section divider */
+    .section-divider {
+      position: relative;
+      width: calc(333px * var(--r));
+      height: calc(24px * var(--r));
+      flex-shrink: 0;
+    }
+    .section-divider img { position: absolute; display: block; }
+    .section-divider__leaf-left  { left: calc(5px * var(--r));   top: calc(5px * var(--r));   width: calc(10px * var(--r)); height: calc(14.807px * var(--r)); }
+    .section-divider__line-left  { left: calc(20px * var(--r));  top: calc(11px * var(--r));  width: calc(130px * var(--r)); height: calc(1px * var(--r)); }
+    .section-divider__ornament   { left: calc(139px * var(--r)); top: calc(2px * var(--r));   width: calc(54px * var(--r)); height: calc(20px * var(--r)); }
+    .section-divider__line-right { left: calc(182px * var(--r)); top: calc(11px * var(--r));  width: calc(130px * var(--r)); height: calc(1px * var(--r)); }
+    .section-divider__leaf-right { left: calc(318px * var(--r)); top: calc(5px * var(--r));   width: calc(10px * var(--r)); height: calc(14.807px * var(--r)); }
+
+    /* ── VENUE SECTION ── */
+    .venue-section-wrap {
+      width: 100%;
+      background: var(--color-background-cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 calc(30px * var(--r)) calc(48px * var(--r));
+      gap: calc(12px * var(--r));
+    }
+
+    .venue-title {
+      font-family: 'Allura', cursive;
+      font-size: calc(48px * var(--r));
+      font-weight: 400;
+      color: var(--color-primary);
+      text-align: center;
+      line-height: 1;
+      width: 100%;
+    }
+
+    .venue-card {
+      position: relative;
+      width: 100%;
+      height: calc(500px * var(--r));
+      border-radius: calc(10px * var(--r));
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .venue-card__photo {
+      position: absolute;
+      top: 0;
+      left: -62.6%;
+      width: 225.2%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .venue-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.32);
+    }
+
+    .venue-card__content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: calc(25px * var(--r));
+      padding: calc(35px * var(--r)) calc(21px * var(--r));
+    }
+
+    .venue-type-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(5px * var(--r));
+    }
+
+    .venue-ring-icon {
+      width:  calc(45px * var(--r));
+      height: calc(45px * var(--r));
+      display: block;
+    }
+
+    .venue-type-name {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 700;
+      font-size: calc(25px * var(--r));
+      color: var(--color-white);
+      text-align: center;
+      padding: calc(10px * var(--r));
+      line-height: 1;
+    }
+
+    .venue-type-divider {
+      width:  calc(204px * var(--r));
+      height: calc(1px * var(--r));
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .venue-time {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 700;
+      font-size: calc(20px * var(--r));
+      color: var(--color-white);
+      text-align: center;
+      line-height: 1;
+    }
+
+    .venue-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(25px * var(--r));
+    }
+
+    .venue-name {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 700;
+      font-size: calc(25px * var(--r));
+      color: var(--color-white);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .venue-address {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 500;
+      font-size: calc(13px * var(--r));
+      color: var(--color-white);
+      text-align: center;
+      width: 100%;
+      line-height: 1;
+      padding: calc(13px * var(--r)) 0;
+    }
+
+    .venue-map-btn {
+      background: #30401c;
+      border: none;
+      border-radius: calc(10px * var(--r));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(10px * var(--r));
+      padding: calc(8px * var(--r)) calc(20px * var(--r));
+      width: calc(263px * var(--r));
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .venue-map-btn img {
+      width:  calc(27px * var(--r));
+      height: calc(25px * var(--r));
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .venue-map-btn span {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 500;
+      font-size: calc(13px * var(--r));
+      color: var(--color-white);
+      white-space: nowrap;
+    }
+
+    /* ── SCHEDULE SECTION ── */
+    .schedule-section-wrap {
+      width: 100%;
+      background: var(--color-background-cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 calc(30px * var(--r)) calc(48px * var(--r));
+      gap: calc(50px * var(--r));
+    }
+
+    .schedule-divider {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: calc(6px * var(--r));
+    }
+
+    .schedule-divider--flipped { transform: scaleY(-1); }
+
+    .sched-div-leaf {
+      width:  calc(10px    * var(--r));
+      height: calc(14.44px * var(--r));
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .sched-div-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-primary);
+      opacity: 0.35;
+    }
+
+    .sched-div-ornament {
+      width:  calc(25px * var(--r));
+      height: calc(20px * var(--r));
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .schedule-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(12px * var(--r));
+      width: 100%;
+    }
+
+    .schedule-item {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 500;
+      font-size: calc(14px * var(--r));
+      color: #999;
+      text-align: center;
+      line-height: 1.6;
+      padding: calc(10px * var(--r));
+      width: 100%;
+    }
+
+    /* ── FOOTER SECTION ── */
+    .footer-section-wrap {
+      width: 100%;
+      background: var(--color-background-cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(40px * var(--r)) calc(30px * var(--r)) calc(32px * var(--r));
+      gap: calc(24px * var(--r));
+      position: relative;
+      overflow: hidden;
+      min-height: calc(220px * var(--r));
+    }
+
+    .footer-scroll-top-btn {
+      width: calc(45px * var(--r));
+      height: calc(45px * var(--r));
+      background: var(--color-whatsapp);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 calc(10.5px * var(--r)) rgba(88,130,0,0.5);
+      animation: footer-breathe 2.2s ease-in-out infinite;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .footer-scroll-top-btn img {
+      width: calc(18px * var(--r));
+      height: calc(18px * var(--r));
+      display: block;
+    }
+
+    @keyframes footer-breathe {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.15); }
+    }
+
+    .footer-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(8px * var(--r));
+      z-index: 2;
+    }
+
+    .footer-cta-label {
+      font-family: 'Comic Neue', sans-serif;
+      font-weight: 400;
+      font-size: calc(12px * var(--r));
+      color: var(--color-primary);
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-cta-title {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 400;
+      font-size: calc(30px * var(--r));
+      color: var(--color-primary);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .footer-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(3px * var(--r));
+      background: var(--color-primary);
+      color: var(--color-white);
+      font-family: 'Comic Neue', sans-serif;
+      font-weight: 700;
+      font-size: calc(12px * var(--r));
+      border-radius: calc(30px * var(--r));
+      padding: calc(8px * var(--r)) calc(18px * var(--r));
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .footer-deco-left {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: calc(110px * var(--r));
+      height: calc(200px * var(--r));
+      object-fit: cover;
+      object-position: right top;
+      pointer-events: none;
+    }
+
+    .footer-deco-right {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: calc(110px * var(--r));
+      height: calc(200px * var(--r));
+      object-fit: cover;
+      object-position: left top;
+      pointer-events: none;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(calc(40px * var(--r)));
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── TRANSITIONS ── */
+
+    /* Kapak kartı hafif büyüyüp solar */
+    @keyframes card-bloom-exit {
+      0%   { opacity: 1; transform: scale(1); }
+      20%  { opacity: 1; transform: scale(1.03); }
+      100% { opacity: 0; transform: scale(1.08); }
+    }
+
+    /* Çelenk / daireler dışa doğru açılır ve solar */
+    @keyframes bloom-out {
+      0%   { transform: scale(1);   opacity: 1; }
+      50%  { transform: scale(1.7); opacity: 0.5; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+
+    /* Davetiye sayfası beliriş */
+    @keyframes inv-fade-in {
+      0%   { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Scroll yaprakları – merkezden kenara doğru açılır */
+    @keyframes scroll-fly-right {
+      0%   { transform: translateX(60px) scale(0.25) rotate(-25deg); opacity: 0; }
+      100% { transform: translateX(0)    scale(1)    rotate(0deg);   opacity: 1; }
+    }
+    @keyframes scroll-fly-left {
+      0%   { transform: translateX(-60px) scale(0.25) rotate(25deg); opacity: 0; }
+      100% { transform: translateX(0)     scale(1)    rotate(0deg);  opacity: 1; }
+    }
+
+    /* Hero içerik elemanları sırayla yüzer */
+    @keyframes hero-item-in {
+      0%   { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-down ok nefes animasyonu */
+    @keyframes breathe {
+      0%, 100% { transform: rotate(180deg) scale(1); }
+      50%       { transform: rotate(180deg) scale(1.18); }
+    }
+
+    .hero-scroll-down {
+      display: block;
+      width:  calc(101px * var(--r));
+      height: calc(99.5px * var(--r));
+      cursor: pointer;
+      transform: rotate(180deg);
+      animation: breathe 2.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(88,130,0,0.5)) drop-shadow(0 0 14px rgba(88,130,0,0.25));
+      background: none;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- objectBoundingBox clip scales the arch proportionally with .photo-wrap -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <clipPath id="archClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0 0 L 1 0 L 1 0.9478 C 0.8560 0.9759 0.7054 0.9911 0.5493 0.9911 L 0.4507 0.9911 C 0.2946 0.9911 0.1439 0.9759 0 0.9478 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <div class="page-wrapper">
+  <div class="card">
+
+    <!-- Couple photo -->
+    <div class="photo-wrap">
+      <img src="couple.png" alt="Elif Begüm & Mücahit" />
+    </div>
+
+    <!-- Dark vignette -->
+    <div class="vignette"></div>
+
+    <!-- Decorative circles -->
+    <div class="circle-outer"><img src="circle-outer.svg" alt="" /></div>
+    <div class="circle-inner"><img src="circle-inner.svg" alt="" /></div>
+
+    <!-- Leaf wreath -->
+    <div class="wreath"><img src="wreath.svg" alt="" /></div>
+
+    <!-- Lotus -->
+    <div class="lotus"><img src="lotus.svg" alt="" /></div>
+
+    <!-- Frame 377 -->
+    <div class="frame377"><img src="frame377.svg" alt="" /></div>
+
+    <!-- Names -->
+    <div class="names-block">
+      <div class="names">Elif Begüm<br>&amp;<br>Mücahit</div>
+      <div class="subtitle">Evleniyoruz</div>
+    </div>
+
+    <!-- CTA row -->
+    <div class="cta-row">
+      <div class="cta-arrow cta-arrow--left">
+        <img src="arrow-left.svg" alt="" />
+      </div>
+      <button class="open-btn" onclick="openInvitation()">
+        <img class="open-btn__icon" src="invitation-icon.svg" alt="" />
+        <div class="open-btn__label-wrap">
+          <span class="open-btn__label">Davetiyeyi Aç</span>
+        </div>
+      </button>
+      <div class="cta-arrow cta-arrow--right">
+        <img src="arrow-right.svg" alt="" />
+      </div>
+    </div>
+
+    <!-- Date section -->
+    <div class="date-section">
+      <div class="date-row">
+        <div class="date-pill">AĞUSTOS</div>
+        <div class="date-day">29</div>
+        <div class="date-pill date-pill--year">2026</div>
+      </div>
+      <div class="date-time">CUMARTESİ 19:00</div>
+    </div>
+
+  </div>
+
+    <!-- ── INVITATION PAGE ── -->
+    <div class="invitation-page" id="invitation-page">
+
+      <!-- Photo section -->
+      <div class="hero-photo">
+        <img class="hero-photo__img" src="hero-couple-photo.png" alt="Elif Begüm & Mücahit" />
+        <div class="hero-photo__overlay"></div>
+        <div class="hero-photo__content">
+          <div class="hero-names">Elif Begüm<br>&amp;<br>Mücahit</div>
+          <div class="hero-date-badge">
+            <img class="hero-date-dot" src="hero-dot.svg" alt="" />
+            <span class="hero-date-text">29 08 2026</span>
+            <img class="hero-date-dot" src="hero-dot.svg" alt="" />
+          </div>
+          <p class="hero-message">En güzel hikayemizin en özel gününde sizleri de aramızda görmekten mutluluk duyarız.</p>
+          <button class="hero-scroll-down" onclick="document.getElementById('first-section').scrollIntoView({behavior:'smooth'})" aria-label="Aşağı kaydır">
+            <img src="arrow-right.svg" alt="" style="width:100%;height:100%;display:block;" />
+          </button>
+          <img class="hero-scroll-left"  src="hero-scroll-left.svg"  alt="" />
+          <img class="hero-scroll-right" src="hero-scroll-right.svg" alt="" />
+        </div>
+      </div>
+
+      <!-- Illustration section -->
+      <div class="hero-illustration" id="first-section">
+        <img class="hero-illustration__bg" src="hero-couple-illustration.png" alt="" />
+        <div class="hero-watercolor-wrap">
+          <img src="hero-couple-watercolor.png" alt="" />
+        </div>
+        <img class="hero-decoration-line" src="hero-decoration-line.svg" alt="" />
+      </div>
+
+      <!-- ── COUNTDOWN SECTION ── -->
+      <div class="countdown-section-wrap">
+        <div class="countdown-block reveal">
+          <div class="countdown-title">Geri Sayım</div>
+          <div class="countdown-subtitle">29 Ağustos 2026<br>Cumartesi 19:00</div>
+          <div class="countdown-timer">
+            <div class="countdown-unit">
+              <span class="countdown-unit__number" id="cd-days">00</span>
+              <span class="countdown-unit__label">Gün</span>
+            </div>
+            <div class="countdown-sep"></div>
+            <div class="countdown-unit">
+              <span class="countdown-unit__number" id="cd-hours">00</span>
+              <span class="countdown-unit__label">Saat</span>
+            </div>
+            <div class="countdown-sep"></div>
+            <div class="countdown-unit">
+              <span class="countdown-unit__number" id="cd-minutes">00</span>
+              <span class="countdown-unit__label">Dakika</span>
+            </div>
+            <div class="countdown-sep"></div>
+            <div class="countdown-unit">
+              <span class="countdown-unit__number" id="cd-seconds">00</span>
+              <span class="countdown-unit__label">Saniye</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <img class="section-divider__leaf-left"  src="countdown-leaf-left.svg"  alt="" />
+          <img class="section-divider__line-left"  src="countdown-line-left.svg"  alt="" />
+          <img class="section-divider__ornament"   src="countdown-ornament.svg"   alt="" />
+          <img class="section-divider__line-right" src="countdown-line-right.svg" alt="" />
+          <img class="section-divider__leaf-right" src="countdown-leaf-right.svg" alt="" />
+        </div>
+      </div>
+
+      <!-- ── VENUE SECTION ── -->
+      <div class="venue-section-wrap">
+        <div class="venue-title reveal">Konum ve Tarih</div>
+        <div class="venue-card reveal reveal-delay-1">
+          <img class="venue-card__photo" src="venue-photo.jpeg" alt="Duru Garden Kır Düğün Salonu" />
+          <div class="venue-card__overlay"></div>
+          <div class="venue-card__content">
+            <div class="venue-type-block">
+              <img class="venue-ring-icon" src="venue-ring-icon.svg" alt="" />
+              <div class="venue-type-name">Düğün Salonu</div>
+              <img class="venue-type-divider" src="venue-divider.svg" alt="" />
+            </div>
+            <div class="venue-time">19.00 - 23.00</div>
+            <div class="venue-details">
+              <div>
+                <div class="venue-name">DURU GARDEN<br>KIR DÜĞÜN SALONU</div>
+                <div class="venue-address">Yeni, 05800 Taşova/Amasya</div>
+              </div>
+              <a class="venue-map-btn" href="https://maps.app.goo.gl/ZEudmHXyWPamwvHt9" target="_blank" rel="noopener">
+                <img src="venue-map-icon.svg" alt="" />
+                <span>Haritada Aç</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SCHEDULE SECTION ── -->
+      <div class="schedule-section-wrap">
+        <div class="section-divider" style="transform: rotate(180deg);">
+          <img class="section-divider__leaf-left" src="countdown-leaf-left.svg" alt="">
+          <img class="section-divider__line-left" src="countdown-line-left.svg" alt="">
+          <img class="section-divider__ornament" src="countdown-ornament.svg" alt="">
+          <img class="section-divider__line-right" src="countdown-line-right.svg" alt="">
+          <img class="section-divider__leaf-right" src="countdown-leaf-right.svg" alt="">
+        </div>
+
+        <div class="schedule-items reveal">
+          <p class="schedule-item">Yemek: 11.00 - 18.00 arası belediye düğün salonu</p>
+          <p class="schedule-item">Gelin alma 18.00'da doğu mah. evimizin önünden hareket edilecektir.</p>
+          <p class="schedule-item">Eğlence: 19.00 - 23.00 arası DURU GARDEN kır düğün salonu.</p>
+        </div>
+
+        <div class="section-divider" style="transform: scaleX(-1);">
+          <img class="section-divider__leaf-left" src="countdown-leaf-left.svg" alt="">
+          <img class="section-divider__line-left" src="countdown-line-left.svg" alt="">
+          <img class="section-divider__ornament" src="countdown-ornament.svg" alt="">
+          <img class="section-divider__line-right" src="countdown-line-right.svg" alt="">
+          <img class="section-divider__leaf-right" src="countdown-leaf-right.svg" alt="">
+        </div>
+      </div>
+
+      <!-- ── FOOTER SECTION ── -->
+      <div class="footer-section-wrap">
+        <button class="footer-scroll-top-btn reveal" onclick="window.scrollTo({top:0,behavior:'smooth'});document.body.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTo({top:0,behavior:'smooth'});">
+          <img src="footer-whatsapp-icon.svg" alt="" />
+        </button>
+
+        <div class="footer-cta-wrap reveal reveal-delay-1">
+          <p class="footer-cta-label">Dijital Davetiye için<br>İletişime Geçin</p>
+          <p class="footer-cta-title">Dijital Davetiye</p>
+          <a class="footer-cta-btn" href="https://wa.me/905467856544" target="_blank" rel="noopener">İletişime geç</a>
+        </div>
+
+        <img class="footer-deco-left"  src="footer-decoration-left.png"  alt="" />
+        <img class="footer-deco-right" src="footer-decoration-right.png" alt="" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function applyExpand() {
+      const r = Math.min(window.innerWidth, 658) / 393;
+      document.documentElement.style.setProperty('--r', r);
+    }
+
+    function openInvitation() {
+      const card        = document.querySelector('.card');
+      const wreath      = card.querySelector('.wreath');
+      const circleOuter = card.querySelector('.circle-outer');
+      const circleInner = card.querySelector('.circle-inner');
+      const invPage     = document.getElementById('invitation-page');
+
+      card.style.pointerEvents = 'none';
+
+      // Çelenk ve daireler dışa açılır
+      const ease = '0.4s cubic-bezier(0.4,0,1,1) forwards';
+      wreath.style.transformOrigin      = 'center center';
+      circleOuter.style.transformOrigin = 'center center';
+      circleInner.style.transformOrigin = 'center center';
+      wreath.style.animation      = `bloom-out ${ease}`;
+      circleOuter.style.animation = `bloom-out 0.45s cubic-bezier(0.4,0,1,1) 0.05s forwards`;
+      circleInner.style.animation = `bloom-out 0.42s cubic-bezier(0.4,0,1,1) 0.03s forwards`;
+
+      // Kapak kartı büyüyüp solar
+      card.style.animation = 'card-bloom-exit 0.65s cubic-bezier(0.4,0,0.2,1) 0.05s forwards';
+
+      setTimeout(() => {
+        card.style.display = 'none';
+
+        document.querySelector('html').style.overflow   = 'auto';
+        document.querySelector('html').style.height     = 'auto';
+        document.querySelector('body').style.overflowY  = 'auto';
+        document.querySelector('body').style.overflowX  = 'hidden';
+        document.querySelector('body').style.height     = 'auto';
+        document.querySelector('body').style.alignItems = 'flex-start';
+
+        invPage.classList.add('is-active');
+
+        // Sayfanın kendisi belirir
+        invPage.style.animation = 'inv-fade-in 0.35s ease-out forwards';
+
+        // Scroll yaprakları merkezden kenarlara açılır
+        const scrollR = invPage.querySelector('.hero-scroll-right');
+        const scrollL = invPage.querySelector('.hero-scroll-left');
+        const flyEase = 'cubic-bezier(0.2,0,0.1,1)';
+        scrollR.style.animation = `scroll-fly-right 0.65s ${flyEase} 0.1s both`;
+        scrollL.style.animation = `scroll-fly-left  0.65s ${flyEase} 0.1s both`;
+
+        // İçerik sırayla yüzer
+        const names = invPage.querySelector('.hero-names');
+        const badge = invPage.querySelector('.hero-date-badge');
+        const msg   = invPage.querySelector('.hero-message');
+        const itemEase = `0.5s cubic-bezier(0.2,0,0.1,1)`;
+        names.style.animation = `hero-item-in ${itemEase} 0.2s both`;
+        badge.style.animation = `hero-item-in ${itemEase} 0.35s both`;
+        msg.style.animation   = `hero-item-in ${itemEase} 0.5s both`;
+
+      }, 550);
+    }
+
+    window.addEventListener('resize', applyExpand);
+    applyExpand();
+
+    // Countdown — hedef: 29 Ağustos 2026 19:00 Türkiye (UTC+3)
+    function updateCountdown() {
+      const target = new Date('2026-08-29T19:00:00+03:00');
+      const diff   = target - new Date();
+      const pad    = n => String(Math.max(0, n)).padStart(2, '0');
+
+      if (diff <= 0) {
+        ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+        return;
+      }
+
+      const days    = Math.floor(diff / 86400000);
+      const hours   = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000)  / 60000);
+      const seconds = Math.floor((diff % 60000)     / 1000);
+
+      document.getElementById('cd-days').textContent    = pad(days);
+      document.getElementById('cd-hours').textContent   = pad(hours);
+      document.getElementById('cd-minutes').textContent = pad(minutes);
+      document.getElementById('cd-seconds').textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* ── SCROLL REVEAL ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
