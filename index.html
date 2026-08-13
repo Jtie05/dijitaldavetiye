@@ -90,7 +90,7 @@
     /* ── VIGNETTE OVERLAY ── */
     .vignette {
       position: absolute;
-      top: calc(-190px * var(--r));
+      top: calc(-222px * var(--r));
       left: calc(-525px * var(--r));
       width: calc(1440px * var(--r));
       height: calc(855px * var(--r));
@@ -105,9 +105,9 @@
     /* ── CIRCLE OUTER ── */
     .circle-outer {
       position: absolute;
-      top:    calc(0.2347 * 852px * var(--r));
+      top:    calc((0.2347 * 852px - 32px) * var(--r));
       right:  calc(0.084  * 393px * var(--r));
-      bottom: calc(0.3826 * 852px * var(--r));
+      bottom: calc((0.3826 * 852px + 32px) * var(--r));
       left:   calc(0.0865 * 393px * var(--r));
       pointer-events: none;
     }
@@ -116,9 +116,9 @@
     /* ── CIRCLE INNER ── */
     .circle-inner {
       position: absolute;
-      top:    calc(0.2406 * 852px * var(--r));
+      top:    calc((0.2406 * 852px - 32px) * var(--r));
       right:  calc(0.0967 * 393px * var(--r));
-      bottom: calc(0.3885 * 852px * var(--r));
+      bottom: calc((0.3885 * 852px + 32px) * var(--r));
       left:   calc(0.0992 * 393px * var(--r));
       pointer-events: none;
     }
@@ -127,9 +127,9 @@
     /* ── WREATH ── */
     .wreath {
       position: absolute;
-      top:    calc(0.2136 * 852px * var(--r));
+      top:    calc((0.2136 * 852px - 32px) * var(--r));
       right:  calc(0.1908 * 393px * var(--r));
-      bottom: calc(0.3885 * 852px * var(--r));
+      bottom: calc((0.3885 * 852px + 32px) * var(--r));
       left:   calc(0.1883 * 393px * var(--r));
       pointer-events: none;
     }
@@ -138,9 +138,9 @@
     /* ── LOTUS ── */
     .lotus {
       position: absolute;
-      top:    calc(0.581  * 852px * var(--r));
+      top:    calc((0.581  * 852px - 32px) * var(--r));
       right:  calc(0.4224 * 393px * var(--r));
-      bottom: calc(0.3746 * 852px * var(--r));
+      bottom: calc((0.3746 * 852px + 32px) * var(--r));
       left:   calc(0.4504 * 393px * var(--r));
       pointer-events: none;
     }
@@ -149,7 +149,7 @@
     /* ── FRAME 377 ── */
     .frame377 {
       position: absolute;
-      top:  calc(497px * var(--r));
+      top:  calc(465px * var(--r));
       left: calc(117px * var(--r));
       width:  calc(51px * var(--r));
       height: calc(25px * var(--r));
@@ -160,7 +160,7 @@
     /* ── NAMES BLOCK ── */
     .names-block {
       position: absolute;
-      top:  calc(257px * var(--r));
+      top:  calc(225px * var(--r));
       left: calc(37px  * var(--r));
       width: calc(319px * var(--r));
       display: flex;
@@ -193,7 +193,7 @@
     /* ── CTA ROW ── */
     .cta-row {
       position: absolute;
-      top:  calc(627px * var(--r));
+      top:  calc(595px * var(--r));
       left: calc(52px  * var(--r));
       width:  calc(290px * var(--r));
       height: calc(85px  * var(--r));
